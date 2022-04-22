@@ -1,0 +1,34 @@
+{
+  "RootNamespace": "SeAdminSiswa",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "Restore": {
+    "Exclude": [
+      "/wwwroot/Scripts/serenity/Serenity.CoreLib*.*"
+    ]
+  },
+  "Connections": [
+    {
+      "Key": "Siswa",
+      "Tables": [
+        {
+          "Tablename": "kota",
+          "Identifier": "Kota",
+          "Module": "Siswa",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "siswa",
+          "Identifier": "Siswa",
+          "Module": "Siswa",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "5.2.4.0"
+  }
+}
