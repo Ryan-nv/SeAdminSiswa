@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/UGaM3nZqV/TZrEv8v4raQKhjFh/wZUFSn4bG2gi1Zg+KZdYpwjNFCHjPH+Mwi320hoCmS6gens1iKgi4IzYoA==",
+  "dgSpecHash": "kXzzuvZQbIWnfl0Zff8j+D8QTkGdIdOb7XtyZmohFd1m2d7uL/b8cxDLMk6QVv35WDmOAf4jGX6+VT3O95922g==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\WebApp\\Serenity\\SeAdminSiswa\\SeAdminSiswa.Web\\SeAdminSiswa.Web.csproj",
+  "projectFilePath": "C:\\Magang\\Pra_Magang_Util\\serenesiswa\\SeAdminSiswa\\SeAdminSiswa.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",

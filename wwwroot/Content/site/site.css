@@ -79,3 +79,7 @@
 .s-PermissionCheckEditor .effective-permission.deny {
   background-image: url(../serenity/images/slash.png);
 }
+.s-SeAdminSiswa-Siswa-SiswaDialog .s-Siswa-SiswaDialog .s-SiswaDialog{
+  width: 100%;
+  height: auto;
+}

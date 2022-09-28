@@ -2,7 +2,7 @@
 namespace SeAdminSiswa.Siswa {
 
     import fld = SiswaRow.Fields;
-
+    @Serenity.Decorators.filterable()
     @Serenity.Decorators.registerClass()
     export class SiswaGrid extends Serenity.EntityGrid<SiswaRow, any> {
         protected getColumnsKey() { return SiswaColumns.columnsKey; }
@@ -14,6 +14,12 @@ namespace SeAdminSiswa.Siswa {
 
         constructor(container: JQuery) {
             super(container);
+        }
+
+        protected getSlickOptions() : Slick.GridOptions {
+            var opt = super.getSlickOptions();
+            opt.rowHeight = 38;
+            return opt;
         }
 
         protected getQuickSearchFields() : Serenity.QuickSearchField[]
@@ -34,10 +40,10 @@ namespace SeAdminSiswa.Siswa {
             columns.push({
                 field: 'Del Row',
                 name: '',
-                format: _ctx => '<a class="inline-action delete-row" title="delete" href="javascript:;"> <i class="fa fa-trash-o inline-action delete-row text-red"></i> </a>',
-                width: 15,
-                minWidth: 15,
-                maxWidth: 15 
+                format: _ctx => '<a class="inline-action delete-row btn btn-danger" title="delete" href="javascript:;"> <i class="fa fa-trash-o inline-action delete-row"></i> </a>',
+                width: 40,
+                minWidth: 40,
+                maxWidth: 40 
             });
 
             return columns;

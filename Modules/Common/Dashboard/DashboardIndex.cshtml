@@ -150,28 +150,29 @@
     </div>
 </div>
 
-<div class="row mb-lg-3 mb-sm-1">
+<div class="row mb-lg-5 mb-sm-1">
     <div class="col-lg-6 col-md-12">
-        <h2 class="m-sm-1 m-lg-2 text-center">Presentase murid berdasarkan jenis kelamin</h2>
+        <h2 class="m-sm-1 m-lg-2 text-center mb-3">Presentase murid berdasarkan jenis kelamin</h2>
         <div>
-            <canvas id="presentase-jenis-kelamin-chart" style="height: 450px; width: auto; margin: 0 auto;"></canvas>
+            <canvas id="presentase-jenis-kelamin-chart" style="height: 400px; width: auto; margin: 0 auto;"></canvas>
         </div>
     </div>
-    <div class="card col-lg-6 col-md-12">
-        <div class="m-sm-1 m-lg-2 text-center">
+    <div class="col-lg-6 col-md-12">
+        <h2 class="m-sm-1 m-lg-2 text-center mb-3">Asal Kota Siswa</h2>
+        <div>
+            <canvas id="asal-kota-chart" style="height: 400px; width: auto; margin: 0 auto;"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-lg-5 mt-sm-1">
+    <div class="card row mt-lg-3 mt-sm-1">
+        <div class=" m-sm-1 m-lg-2 text-center">
             <h3>Jumlah siswa bedasarkan tahun kelahiran</h3>
         </div>
         <div class="card-body">
-            <canvas id="kelahiran-chart" style="height: 260px;"></canvas>
+            <canvas id="kelahiran-chart" style="height: 400px;"></canvas>
         </div>
-    </div>
-    <div id="BukuDiv"></div>
-</div>
-
-<div class="row mt-lg-3 mt-sm-1">
-    <h1 class="m-sm-1 m-lg-2 text-center">Asal Kota Siswa</h1>
-    <div>
-        <canvas id="asal-kota-chart" style="height: 700px; width: auto; margin: 0 auto;"></canvas>
     </div>
 </div>
 
@@ -180,13 +181,13 @@
         var jenkelChart = new Chart(document.getElementById('presentase-jenis-kelamin-chart'), {
             type: 'doughnut',
             data: {
-                labels: ["Laki Laki", "Perempuan", ],
+                labels: ["Laki Laki", "Perempuan",],
                 datasets: [{
                     label: 'Presentase Murid',
                     data: [@Model.MuridLk.ToJson() , @Model.MuridPr.ToJson()],
                     backgroundColor: [
-                        '#4dc9f6',
-                        '#f78af3'
+                        'rgba(39, 125, 245, 0.3)',
+                        'rgba(245, 39, 145, 0.3)'
                     ]
                 }]
             },
@@ -202,7 +203,14 @@
                 datasets: [{
                     label: 'Asal Kota',
                     data: @Model.KotaCount.ToJson(),
-                    backgroundColor: ['#4dc9f6','#4b9df4','#4b81f4']
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(255, 159, 64, 0.3)',
+                        'rgba(255, 205, 86, 0.3)',
+                        'rgba(75, 192, 192, 0.3)',
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(153, 102, 255, 0.3)'
+                    ]
                 }]
             },
             options: {
@@ -218,7 +226,14 @@
                 datasets: [
                     {
                         label: 'Siswa',
-                        backgroundColor: "#a997fc",
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.3)',
+                            'rgba(255, 159, 64, 0.3)',
+                            'rgba(255, 205, 86, 0.3)',
+                            'rgba(75, 192, 192, 0.3)',
+                            'rgba(54, 162, 235, 0.3)',
+                            'rgba(153, 102, 255, 0.3)'
+                        ],
                         barPercentage: 0.7,
                         data: @Model.YearsCount.ToJson()
                     }

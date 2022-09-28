@@ -888,6 +888,11 @@ declare namespace SeAdminSiswa.Siswa {
     }
 }
 declare namespace SeAdminSiswa.Siswa {
+    class JenisKelaminFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): "<div><i class=\"fa fa-male\" style=\"color:blue;\"></i> Laki Laki</div>" | "<div><i class=\"fa fa-female\" style=\"color:red;\"></i> Perempuan</div>";
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
     class SiswaDialog extends Serenity.EntityDialog<SiswaRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -909,6 +914,7 @@ declare namespace SeAdminSiswa.Siswa {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
         protected getQuickSearchFields(): Serenity.QuickSearchField[];
         protected getColumns(): Slick.Column[];
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;

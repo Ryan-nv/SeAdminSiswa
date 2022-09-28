@@ -16,9 +16,9 @@ namespace SeAdminSiswa.Siswa.Columns
         public int Id { get; set; }
         [EditLink, Width(100)] public string Nis { get; set; }
         [EditLink, Width(600)] public string Nama { get; set; }
-        [EditLink, Width(160)]public DateTime TanggalLahir { get; set; }
-        [EditLink, Width(160), QuickFilter]public JenKel JenisKelamin { get; set; }
-        [EditLink, Width(160), QuickFilter]public string NamaKota { get; set; }
-        [EditLink, Width(300)]public string Alamat { get; set; }
+        [Width(160)]public DateTime TanggalLahir { get; set; }
+        [Width(160), JenisKelaminFormatter ,QuickFilter]public JenKel JenisKelamin { get; set; }
+        [ Width(160), QuickFilter]public string NamaKota { get; set; }
+        [Width(300)]public string Alamat { get; set; }
     }
 }
