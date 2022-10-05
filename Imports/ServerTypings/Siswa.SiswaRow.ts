@@ -12,8 +12,13 @@
 
     export namespace SiswaRow {
         export const idProperty = 'Id';
-        export const nameProperty = 'Nis';
+        export const nameProperty = 'Nama';
         export const localTextPrefix = 'Siswa.Siswa';
+        export const lookupKey = 'Siswa.Siswa';
+
+        export function getLookup(): Q.Lookup<SiswaRow> {
+            return Q.getLookup<SiswaRow>('Siswa.Siswa');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';

@@ -5,6 +5,7 @@
 /// <reference types="jqueryui" />
 /// <reference types="serenity.pro.ui" />
 /// <reference types="serenity.pro.extensions" />
+/// <reference types="serenity.extensions" />
 declare namespace SeAdminSiswa.Administration {
     class LanguageColumns {
         static columnsKey: string;
@@ -510,6 +511,192 @@ declare namespace SeAdminSiswa.Siswa {
     }
 }
 declare namespace SeAdminSiswa.Siswa {
+    class JurusanColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface JurusanForm {
+        NamaJurusan: Serenity.StringEditor;
+    }
+    class JurusanForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface JurusanRow {
+        Id?: number;
+        NamaJurusan?: string;
+    }
+    namespace JurusanRow {
+        const idProperty = "Id";
+        const nameProperty = "NamaJurusan";
+        const localTextPrefix = "Siswa.Jurusan";
+        const lookupKey = "Siswa.Jurusan";
+        function getLookup(): Q.Lookup<JurusanRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            NamaJurusan = "NamaJurusan"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    namespace JurusanService {
+        const baseUrl = "Siswa/Jurusan";
+        function Create(request: Serenity.SaveRequest<JurusanRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<JurusanRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<JurusanRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<JurusanRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Siswa/Jurusan/Create",
+            Update = "Siswa/Jurusan/Update",
+            Delete = "Siswa/Jurusan/Delete",
+            Retrieve = "Siswa/Jurusan/Retrieve",
+            List = "Siswa/Jurusan/List"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelasColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface KelasForm {
+        NamaKelas: Serenity.StringEditor;
+        Tingkat: Serenity.IntegerEditor;
+        IdJurusan: Serenity.LookupEditor;
+        SiswaDetailList: SiswaDetailEditor;
+    }
+    class KelasForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface KelasRow {
+        Id?: number;
+        NamaKelas?: string;
+        Tingkat?: number;
+        IdJurusan?: number;
+        IdJurusanNamaJurusan?: string;
+        SiswaDetailList?: KelassiswaRow[];
+    }
+    namespace KelasRow {
+        const idProperty = "Id";
+        const nameProperty = "NamaKelas";
+        const localTextPrefix = "Siswa.Kelas";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            NamaKelas = "NamaKelas",
+            Tingkat = "Tingkat",
+            IdJurusan = "IdJurusan",
+            IdJurusanNamaJurusan = "IdJurusanNamaJurusan",
+            SiswaDetailList = "SiswaDetailList"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    namespace KelasService {
+        const baseUrl = "Siswa/Kelas";
+        function Create(request: Serenity.SaveRequest<KelasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<KelasRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<KelasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<KelasRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Siswa/Kelas/Create",
+            Update = "Siswa/Kelas/Update",
+            Delete = "Siswa/Kelas/Delete",
+            Retrieve = "Siswa/Kelas/Retrieve",
+            List = "Siswa/Kelas/List"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelassiswaColumns {
+        static columnsKey: string;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface KelassiswaForm {
+        SiswaId: Serenity.LookupEditor;
+        KelasId: Serenity.IntegerEditor;
+    }
+    class KelassiswaForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface KelassiswaRow {
+        Id?: number;
+        SiswaId?: number;
+        KelasId?: number;
+        SiswaNis?: string;
+        SiswaNama?: string;
+        SiswaTanggalLahir?: string;
+        SiswaJenisKelamin?: number;
+        SiswaKotaId?: number;
+        SiswaAlamat?: string;
+        KelasNamaKelas?: string;
+        KelasTingkat?: number;
+        KelasIdJurusan?: number;
+    }
+    namespace KelassiswaRow {
+        const idProperty = "Id";
+        const localTextPrefix = "Siswa.Kelassiswa";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            SiswaId = "SiswaId",
+            KelasId = "KelasId",
+            SiswaNis = "SiswaNis",
+            SiswaNama = "SiswaNama",
+            SiswaTanggalLahir = "SiswaTanggalLahir",
+            SiswaJenisKelamin = "SiswaJenisKelamin",
+            SiswaKotaId = "SiswaKotaId",
+            SiswaAlamat = "SiswaAlamat",
+            KelasNamaKelas = "KelasNamaKelas",
+            KelasTingkat = "KelasTingkat",
+            KelasIdJurusan = "KelasIdJurusan"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    namespace KelassiswaService {
+        const baseUrl = "Siswa/Kelassiswa";
+        function Create(request: Serenity.SaveRequest<KelassiswaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<KelassiswaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<KelassiswaRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<KelassiswaRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Siswa/Kelassiswa/Create",
+            Update = "Siswa/Kelassiswa/Update",
+            Delete = "Siswa/Kelassiswa/Delete",
+            Retrieve = "Siswa/Kelassiswa/Retrieve",
+            List = "Siswa/Kelassiswa/List"
+        }
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
     class KotaColumns {
         static columnsKey: string;
     }
@@ -595,8 +782,10 @@ declare namespace SeAdminSiswa.Siswa {
     }
     namespace SiswaRow {
         const idProperty = "Id";
-        const nameProperty = "Nis";
+        const nameProperty = "Nama";
         const localTextPrefix = "Siswa.Siswa";
+        const lookupKey = "Siswa.Siswa";
+        function getLookup(): Q.Lookup<SiswaRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
@@ -860,6 +1049,135 @@ declare namespace SeAdminSiswa.Membership {
     class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
         protected getFormKey(): string;
         private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class JurusanDialog extends Serenity.EntityDialog<JurusanRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: JurusanForm;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class JurusanGrid extends Serenity.EntityGrid<JurusanRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof JurusanDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelasDialog extends Serenity.EntityDialog<KelasRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: KelasForm;
+        constructor();
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelasGrid extends Serenity.EntityGrid<KelasRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof KelasDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    interface SiswaPickerOptions {
+        hideSiswa?: number[];
+    }
+    class SiswaCheckGrid extends Serenity.EntityGrid<SiswaRow, SiswaPickerOptions> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SiswaDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        private rowSelection;
+        constructor(container: JQuery, options: SiswaPickerOptions);
+        protected getColumns(): Slick.Column[];
+        protected usePager(): boolean;
+        protected getInitialTitle(): any;
+        protected getButtons(): Serenity.ToolButton[];
+        get selectedItems(): SiswaRow[];
+        onViewSubmit(): boolean;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class SiswaDetailEditor extends Serenity.Extensions.GridEditorBase<KelassiswaRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof KelassiswaEditDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: KelassiswaRow, id: any): boolean;
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelassiswaEditDialog extends Serenity.Extensions.GridEditorDialog<KelassiswaRow> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: KelassiswaForm;
+        constructor();
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class SiswaPickerDialog extends Serenity.TemplatedDialog<SiswaPickerOptions> {
+        private checkGrid;
+        constructor(opt: SiswaPickerOptions);
+        protected getTemplate(): string;
+        protected getDialogButtons(): {
+            text: string;
+            click: () => void;
+        }[];
+        get selectedItems(): SiswaRow[];
+        onSuccess: (selected: SiswaRow[]) => boolean;
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelassiswaDialog extends Serenity.EntityDialog<KelassiswaRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: KelassiswaForm;
+        constructor();
+    }
+}
+declare namespace SeAdminSiswa.Siswa {
+    class KelassiswaGrid extends Serenity.EntityGrid<KelassiswaRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof KelassiswaDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
         constructor(container: JQuery);
     }
 }

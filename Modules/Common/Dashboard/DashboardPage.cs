@@ -36,7 +36,7 @@ namespace SeAdminSiswa.Common.Pages
                     {
                         model.Murid = connection.Count<SeAdminSiswa.Siswa.SiswaRow>(); 
                         model.MuridLk = connection.Count<SeAdminSiswa.Siswa.SiswaRow>(o.JenisKelamin == (int)SeAdminSiswa.Siswa.JenKel.LakiLaki );
-                        model.MuridPr = connection.Count<SeAdminSiswa.Siswa.SiswaRow>(o.JenisKelamin == (int)SeAdminSiswa.Siswa.JenKel.Perempuan );
+                        model.MuridPr = connection.Count<SeAdminSiswa.Siswa.SiswaRow>(o.JenisKelamin == (int)SeAdminSiswa.Siswa.JenKel.Perempuan ); 
                     }
                     return model;
                 });

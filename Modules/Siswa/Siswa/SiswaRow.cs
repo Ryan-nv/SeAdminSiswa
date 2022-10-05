@@ -13,6 +13,7 @@ namespace SeAdminSiswa.Siswa
     [DisplayName("Siswa"), InstanceName("Siswa")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript]
     public sealed class SiswaRow : Row<SiswaRow.RowFields>, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity, IdProperty]
@@ -22,14 +23,14 @@ namespace SeAdminSiswa.Siswa
             set => fields.Id[this] = value;
         }
 
-        [DisplayName("Nis"), Column("NIS"), Size(10), QuickSearch, NameProperty]
+        [DisplayName("Nis"), Column("NIS"), Size(10), QuickSearch]
         public string Nis
         {
             get => fields.Nis[this];
             set => fields.Nis[this] = value;
         }
 
-        [DisplayName("Nama"), Size(50), QuickSearch]
+        [DisplayName("Nama"), Size(50), QuickSearch, NameProperty]
         public string Nama
         {
             get => fields.Nama[this];

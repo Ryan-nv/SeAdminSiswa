@@ -31,13 +31,13 @@ namespace SeAdminSiswa.Common
 
         public void FetchYearProperty()//fungsi pencari data tahun dll
         {
-            string yearString = "SELECT YEAR(TanggalLahir), COUNT(*) FROM Siswa GROUP BY YEAR(TanggalLahir) ORDER BY COUNT(*) DESC LIMIT 6;";
+            string query = "SELECT YEAR(TanggalLahir), COUNT(*) FROM Siswa GROUP BY YEAR(TanggalLahir) ORDER BY COUNT(*) DESC LIMIT 6;";
 
             //membuat dictionary tahun untuk menyimpan data lalu mengolahnya menjadi nilai integer
             var con = new MySqlConnection(connectionString);
             con.Open();
 
-            MySqlCommand request = new MySqlCommand(yearString, con);
+            MySqlCommand request = new MySqlCommand(query, con);
 
             using MySqlDataReader rdr = request.ExecuteReader();
             List<int> yearList = new List<int>();
@@ -57,18 +57,18 @@ namespace SeAdminSiswa.Common
             List<string> kotaKota = new List<string>();
             List<int> kotaCount = new List<int>();
 
-            string yearString = "SELECT KotaId, kota.NamaKota, COUNT(*) FROM siswa INNER JOIN kota ON siswa.KotaId=kota.IdKota GROUP BY KotaId ORDER BY COUNT(*) DESC LIMIT 6;";
+            string query = "SELECT kota.NamaKota, COUNT(*) FROM siswa INNER JOIN kota ON siswa.KotaId=kota.IdKota GROUP BY KotaId ORDER BY COUNT(*) DESC LIMIT 6;";
             var con = new MySqlConnection(connectionString);
             con.Open();
 
-            MySqlCommand request = new MySqlCommand(yearString, con);
+            MySqlCommand request = new MySqlCommand(query, con);
 
             using MySqlDataReader rdr = request.ExecuteReader();
             
             while (rdr.Read())
             {   
-                kotaKota.Add(rdr.GetString(1));
-                kotaCount.Add(rdr.GetInt32(2));
+                kotaKota.Add(rdr.GetString(0));
+                kotaCount.Add(rdr.GetInt32(1));
             }
 
             KotaKota = kotaKota.ToJson();

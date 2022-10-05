@@ -966,3 +966,7 @@ C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\refint\SeAdm
 C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\SeAdminSiswa.Web.pdb
 C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\SeAdminSiswa.Web.genruntimeconfig.cache
 C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\ref\SeAdminSiswa.Web.dll
+C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\Razor\Modules\Siswa\Dashboard\SiswaDashboardIndex.cshtml.g.cs
+C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\Razor\Modules\Siswa\Jurusan\JurusanIndex.cshtml.g.cs
+C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\Razor\Modules\Siswa\Kelas\KelasIndex.cshtml.g.cs
+C:\Magang\Pra_Magang_Util\serenesiswa\SeAdminSiswa\obj\Debug\net5.0\Razor\Modules\Siswa\Kelassiswa\KelassiswaIndex.cshtml.g.cs

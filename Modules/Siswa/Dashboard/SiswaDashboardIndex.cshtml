@@ -1,0 +1,302 @@
+﻿@model SeAdminSiswa.Siswa.SiswaDashboardPageModel
+@inject Serenity.ITextLocalizer Localizer
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageId"] = "Dashboard";
+}
+
+@section Head {
+@Html.StyleBundle("Pages/Dashboard")
+@Html.ScriptBundle("Pages/Dashboard")
+}
+
+@section ContentHeader {
+<h1>@Localizer.Get("Navigation.Dashboard")</h1>
+}
+
+<style>
+    .s-dashboard-card,
+    .s-dashboard-card-sm {
+        margin-bottom: var(--bs-gutter-x);
+    }
+
+    .s-dashboard-card .card-header {
+        padding: 1rem;
+        border-bottom: none;
+        background-color: transparent;
+    }
+
+    .s-dashboard-card .card-body {
+        border-radius: 0 0 4px 4px;
+        padding: 1rem;
+    }
+
+    .s-dashboard-card .card-footer {
+        border-top-color: transparent;
+        background-color: transparent;
+        padding: 1rem;
+    }
+
+    .s-dashboard-card .card-title {
+        margin: 0;
+        font-size: 1.4rem;
+        color: var(--s-table-title);
+    }
+
+    .s-dashboard-card-sm .card-body {
+        padding: 1rem;
+        border-radius: 4px 4px 0 0;
+        margin: 1px;
+    }
+
+    .s-dashboard-card-sm .card-footer {
+        color: rgba(var(--s-bright-rgb), 0.8);
+        background-color: var(--bs-body-bg);
+        border-radius: 0 0 4px 4px;
+        border-top: none;
+        margin: 0 1px 1px 1px;
+        padding: 3px 0;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .s-dashboard-card-sm h3 {
+        font-size: 38px;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    .s-dashboard-card-sm p {
+        font-size: 15px;
+    }
+
+    .s-dashboard-card-sm p>small {
+        display: block;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .s-dashboard-card-sm .icon {
+        transition: all 0.3s linear;
+        position: absolute;
+        top: 13px;
+        color: #fff;
+        opacity: 0.9;
+        right: 10px;
+        font-size: 64px;
+    }
+
+    .gridbase {
+        height: 650px;
+    }
+
+    .bg-world-map {
+        background: #3c8dbc;
+    }
+
+    .s-dashboard-card-sm:hover .icon {
+        font-size: 70px;
+    }
+
+    .male {
+        background-color: #4dc9f6;
+    }
+
+    .female {
+        background-color: #f78af3;
+    }
+
+    .person {
+        background-color: #a997fc;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-lg-4 col-sm-6">
+        <div class="card s-dashboard-card-sm bg-opacity-50 person">
+            <div class="card-body">
+                <h3>@Model.Murid</h3>
+                <p>Total Siswa</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+        <div class="card s-dashboard-card-sm s-alt bg-opacity-50 male">
+            <div class="card-body">
+                <h3>@Model.MuridLk</h3>
+                <p>Siswa Laki Laki</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-male"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+        <div class="card s-dashboard-card-sm bg-opacity-50 female">
+            <div class="card-body">
+                <h3>@Model.MuridPr</h3>
+                <p>Siswa Perempuan</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-female"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-lg-5 mb-sm-1">
+    <div class="col-lg-6 col-md-12">
+        <h2 class="m-sm-1 m-lg-2 text-center mb-3">Presentase murid berdasarkan jenis kelamin</h2>
+        <div>
+            <canvas id="presentase-jenis-kelamin-chart" style="height: 400px; width: auto; margin: 0 auto;"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+        <h2 class="m-sm-1 m-lg-2 text-center mb-3">Asal Kota Siswa</h2>
+        <div>
+            <canvas id="asal-kota-chart" style="height: 400px; width: auto; margin: 0 auto;"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-lg-5 mt-sm-1">
+    <div class="card row mt-lg-3 mt-sm-1">
+        <div class=" m-sm-1 m-lg-2 text-center">
+            <h3>Jumlah siswa bedasarkan tahun kelahiran</h3>
+        </div>
+        <div class="card-body">
+            <canvas id="kelahiran-chart" style="height: 400px;"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    onload = function () {
+        var jenkelChart = new Chart(document.getElementById('presentase-jenis-kelamin-chart'), {
+            type: 'doughnut',
+            data: {
+                labels: ["Laki Laki", "Perempuan",],
+                datasets: [{
+                    label: 'Presentase Murid',
+                    data: [@Model.MuridLk.ToJson() , @Model.MuridPr.ToJson()],
+                    backgroundColor: [
+                        'rgba(39, 125, 245, 0.3)',
+                        'rgba(245, 39, 145, 0.3)'
+                    ],
+                    borderColor: [
+                        'rgba(39, 125, 245, 1)',
+                        'rgba(245, 39, 145, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+        var asalKotaChart = new Chart(document.getElementById('asal-kota-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: @Html.Raw(Model.KotaKota),
+                datasets: [{
+                    label: 'Asal Kota',
+                    data: @Model.KotaCount.ToJson(),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(255, 159, 64, 0.3)',
+                        'rgba(255, 205, 86, 0.3)',
+                        'rgba(75, 192, 192, 0.3)',
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(153, 102, 255, 0.3)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+        var kelahiranChart = new Chart(document.getElementById('kelahiran-chart'), {
+            type: 'bar',
+            data:
+            {
+                labels: @Model.Years.ToJson(),
+                datasets: [
+                    {
+                        label: 'Siswa',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.3)',
+                            'rgba(255, 159, 64, 0.3)',
+                            'rgba(255, 205, 86, 0.3)',
+                            'rgba(75, 192, 192, 0.3)',
+                            'rgba(54, 162, 235, 0.3)',
+                            'rgba(153, 102, 255, 0.3)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                        ],
+                        borderWidth: 1,
+                        barPercentage: 0.7,
+                        data: @Model.YearsCount.ToJson()
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: {
+                            callback: function (val, index) {
+                                return index % 4 === 0 ? this.getLabelForValue(val) : '';
+                            },
+                            color: 'rgb(140, 142, 150)'
+                        },
+                        grid: {
+                            color: 'rgba(140, 142, 150, 0.15)',
+                            borderDash: [8, 4]
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: {
+                            color: 'rgb(140, 142, 150)'
+                        },
+                        grid: {
+                            color: 'rgba(140, 142, 150, 0.15)',
+                            borderDash: [8, 4]
+                        }
+                    }
+                },
+                indexAxis: 'y'
+            }
+        });
+    }
+</script>

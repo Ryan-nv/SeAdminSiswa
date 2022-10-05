@@ -81,6 +81,26 @@ namespace MVC
 
         public static class Siswa
         {
+            public static class Dashboard
+            {
+                public const string SiswaDashboardIndex = "~/Modules/Siswa/Dashboard/SiswaDashboardIndex.cshtml";
+            }
+
+            public static class Jurusan
+            {
+                public const string JurusanIndex = "~/Modules/Siswa/Jurusan/JurusanIndex.cshtml";
+            }
+
+            public static class Kelas
+            {
+                public const string KelasIndex = "~/Modules/Siswa/Kelas/KelasIndex.cshtml";
+            }
+
+            public static class Kelassiswa
+            {
+                public const string KelassiswaIndex = "~/Modules/Siswa/Kelassiswa/KelassiswaIndex.cshtml";
+            }
+
             public static class Kota
             {
                 public const string KotaIndex = "~/Modules/Siswa/Kota/KotaIndex.cshtml";

@@ -13,6 +13,24 @@
       "Key": "Siswa",
       "Tables": [
         {
+          "Tablename": "jurusan",
+          "Identifier": "Jurusan",
+          "Module": "Siswa",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "kelas",
+          "Identifier": "Kelas",
+          "Module": "Siswa",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "kelassiswa",
+          "Identifier": "Kelassiswa",
+          "Module": "Siswa",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "kota",
           "Identifier": "Kota",
           "Module": "Siswa",
